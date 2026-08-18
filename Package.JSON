@@ -1,0 +1,12 @@
+{
+  "name": "arti-portfolio",
+  "version": "1.0.0",
+  "description": "Personal Portfolio of Arti Dwivedi",
+  "main": "index.html",
+  "scripts": {
+    "serve": "npx http-server -p 3000"
+  },
+  "keywords": [],
+  "author": "Arti Dwivedi",
+  "license": "ISC"
+}

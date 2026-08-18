@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+    if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+    }
+    if (window.location.hash) {
+        history.replaceState(null, document.title, window.location.pathname + window.location.search);
+    }
+</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arti Dwivedi | Portfolio</title>
+    <meta name="description"
+        content="Personal Portfolio of Arti Dwivedi, a Computer Science Engineering Undergraduate. Explore my projects, skills, and journey.">
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Arti Dwivedi | Portfolio">
+    <meta property="og:description" content="Explore my projects and technical skills.">
+    <!-- TODO: replace with your own hosted image once you upload it to portfolio_assets -->
+    <meta property="og:image" content="portfolio_assets/Profile pic.jpeg">
+
+    <link rel="icon" href="portfolio_assets/Profile pic.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+    <!-- TODO: these Vercel scripts belong to the original site's analytics account.
+         Remove them or replace with your own Vercel project's analytics once deployed. --
+</head>
+
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+    <!-- ── Floating Navbar ── -->
+    <nav class="site-nav" id="siteNav">
+        <div class="nav-pill">
+            <span class="nav-indicator" id="navIndicator"></span>
+            <a href="#home" class="nav-link active" data-section="home">
+                <i class="fa-solid fa-house nav-icon"></i>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="#about" class="nav-link" data-section="about">
+                <i class="fa-solid fa-user nav-icon"></i>
+                <span class="nav-label">About</span>
+            </a>
+            <a href="#projects" class="nav-link" data-section="projects">
+                <i class="fa-solid fa-code nav-icon"></i>
+                <span class="nav-label">Projects</span>
+            </a>
+            <a href="#skills" class="nav-link" data-section="skills">
+                <i class="fa-solid fa-layer-group nav-icon"></i>
+                <span class="nav-label">Skills</span>
+            </a>
+            <a href="#certifications" class="nav-link" data-section="certifications">
+                <i class="fa-solid fa-award nav-icon"></i>
+                <span class="nav-label">Certs</span>
+            </a>
+            <a href="#profiles" class="nav-link" data-section="profiles">
+                <i class="fa-solid fa-globe nav-icon"></i>
+                <span class="nav-label">Profiles</span>
+            </a>
+            <a href="#contact" class="nav-link" data-section="contact">
+                <i class="fa-solid fa-envelope nav-icon"></i>
+                <span class="nav-label">Contact</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ── Preloader: Boot Sequence ── -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-particles" id="preloaderParticles"></div>
+
+        <!-- Branding -->
+        <div class="preloader-brand">
+            <div class="preloader-brand-main">
+                <span class="preloader-brand-name">Arti</span><span class="preloader-brand-accent">Dwivedi</span>
+            </div>
+            <div class="preloader-brand-subtitle">
+                <span class="subtitle-line"></span>
+                <span>Personal Portfolio</span>
+                <span class="subtitle-line"></span>
+            </div>
+        </div>
+        <!-- Sleek Loading Bar -->
+        <div class="preloader-sleek-track">
+            <div class="preloader-sleek-fill" id="preloaderSleekFill"></div>
+        </div>
+        <!-- Cycling Tagline -->
+        <div class="preloader-tagline">
+            <span class="tagline-word" style="--w:0">Learn.</span>
+            <span class="tagline-word" style="--w:1">Build.</span>
+            <span class="tagline-word" style="--w:2">Ship.</span>
+            <span class="tagline-word" style="--w:3">Repeat.</span>
+        </div>
+    </div>
+
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <div class="background-container">
+        <canvas id="bg-canvas"></canvas>
+    </div>
+
+    <main class="hero" id="home">
+
+        <div class="floating-icon icon-top-left">
+            <i class="fa-solid fa-code"></i>
+        </div>
+        <div class="floating-icon icon-top-right">
+            <i class="fa-solid fa-brain"></i>
+        </div>
+        <div class="floating-icon icon-bottom-left">
+            <i class="fa-solid fa-trophy"></i>
+        </div>
+        <div class="floating-icon icon-bottom-right">
+            <i class="fa-regular fa-lightbulb"></i>
+        </div>
+
+        <div class="content-wrapper">
+            <h2 class="sub-title">Woah! You Landed on the Portfolio Website of The</h2>
+            <br>
+            <br>
+            <h1 class="main-title">
+                <span class="purple-text" id="typing-text"></span>
+            </h1>
+            <br>
+            <br>
+            <h5 class="year">Arti Dwivedi | CSE Undergrad</h5>
+            <br>
+            <div class="hero-buttons">
+                <!-- TODO: replace # with your real LinkedIn URL -->
+                <a href="https://www.linkedin.com/in/artidwivedi-dev/" target="_blank" class="btn-resume">Let's Connect</a>
+                <a href="javascript:void(0)" id="openResumeBtn" class="btn-resume">View Resume</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- NOTE: script.js likely has "Aakarsh Bibhaw" hardcoded somewhere for the typing
+         animation (#typing-text). Open script.js, find the typed strings array, and
+         replace it with "Arti Dwivedi" or whatever text you want typed out. -->
+
+    <section class="about-section" id="about">
+        <div class="glass-card scroll-reveal">
+            <h2>About Me - <span class="purple-text">Behind The Code!</span></h2>
+            <p>
+                I'm a third-year B.Tech Computer Science Engineering student who learns by building.
+                I work mainly with the MERN stack — React, Node.js, Express, and MongoDB — and I'm
+                always looking for the next tool or concept worth mastering, from AI integration to
+                stronger DSA fundamentals.
+
+                <br><br>I'm currently sharpening my problem-solving through 300+ LeetCode problems,
+                contributing to open source, and building full-stack projects that solve real
+                problems. My goal is to grow into a software engineer who ships impactful,
+                user-centric applications while never stopping learning.
+            </p>
+        </div>
+    </section>
+    <br>
+    <section class="projects-section" id="projects">
+    <h2 class="section-title">Projects Showcase - <span class="purple-text">What I've Built!</span></h2>
+    <br>
+    <div class="timeline">
+        <div class="timeline-line">
+            <div class="timeline-progress"></div>
+        </div>
+
+        <div class="timeline-item left">
+            <div class="timeline-number">01</div>
+            <div class="timeline-content">
+                <div class="project-tag">Full-Stack AI Platform</div>
+                <h3>PathForge AI — AI Resume Analyzer & Career Assistant</h3>
+                <p style="text-align: left; padding: 10px 0;">
+                    Built an AI-powered full-stack platform that analyzes resumes against target job
+                    roles, identifies skill gaps, and provides personalized career recommendations
+                    using React.js, Node.js, Express.js, MongoDB, Google Gemini API, JavaScript, and
+                    REST APIs.
+                </p>
+                <div class="project-links-wrapper">
+                    <a href="https://path-forge-ai-bay.vercel.app/" class="project-btn primary-btn "><i
+                            class="fa-regular fa-eye"></i> View Live</a>
+                    <a href="https://github.com/arti-nova/PathForge-AI" class="project-btn primary-btn "><i
+                            class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </div>
+            <div class="timeline-date">JUNE 2026</div>
+            <div class="timeline-dot"></div>
+        </div>
+
+        <div class="timeline-item right">
+            <div class="timeline-number">02</div>
+            <div class="timeline-content">
+                <div class="project-tag">MERN Project</div>
+                <h3>ThoughtBoard — Full-Stack Note-Taking Application</h3>
+                <p style="text-align: left; padding: 10px 0;">
+                    Built a full-stack note-taking platform that enables users to securely create,
+                    edit, delete, and manage personal notes with a responsive interface, using
+                    React.js, Node.js, Express.js, MongoDB Atlas, Mongoose, JWT, and REST APIs.
+                </p>
+                <div class="project-links-wrapper">
+                    <a href="https://thought-board-seven.vercel.app/" class="project-btn primary-btn "><i
+                            class="fa-regular fa-eye"></i> View Live</a>
+                    <a href="https://github.com/arti-nova/ThoughtBoard" class="project-btn primary-btn "><i
+                            class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </div>
+            <div class="timeline-date">FEBRUARY 2026</div>
+            <div class="timeline-dot"></div>
+        </div>
+
+        <div class="timeline-item left">
+            <div class="timeline-number">03</div>
+            <div class="timeline-content">
+                <div class="project-tag">Frontend Project</div>
+                <h3>CareSphere Health</h3>
+                <p style="text-align: left; padding: 10px 0;">
+                    Built a responsive healthcare platform designed to simplify access to
+                    health-related information and services through an intuitive user interface
+                    using HTML and CSS.
+                </p>
+                <div class="project-links-wrapper">
+                    <a href="https://healthcare-olive-seven.vercel.app/" class="project-btn primary-btn "><i
+                            class="fa-regular fa-eye"></i> View Live</a>
+                    <a href="https://github.com/arti-nova/healthcare" class="project-btn primary-btn "><i
+                            class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </div>
+            <div class="timeline-date">FEBRUARY 2025</div>
+            <div class="timeline-dot"></div>
+        </div>
+
+    </div>
+</section>
+    <br>
+
+    <section class="skills-section" id="skills">
+        <h2 class="section-title">Technical Skills - <span class="purple-text">Core Expertise!</span></h2>
+
+        <div class="skill-filters" id="skillFilters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="languages">Languages</button>
+            <button class="filter-btn" data-filter="frontend">Frontend</button>
+            <button class="filter-btn" data-filter="backend">Backend</button>
+            <button class="filter-btn" data-filter="databases">Databases</button>
+            <button class="filter-btn" data-filter="tools">Tools</button>
+        </div>
+
+        <div class="skill-grid" id="skillGrid">
+
+            <div class="skill-card" data-category="languages">
+                <i class="devicon-c-plain colored"></i>
+                <span>C</span>
+            </div>
+            <div class="skill-card" data-category="languages">
+                <i class="devicon-cplusplus-plain colored"></i>
+                <span>C++</span>
+            </div>
+            <div class="skill-card" data-category="languages">
+                <i class="devicon-javascript-plain colored"></i>
+                <span>JavaScript</span>
+            </div>
+            <div class="skill-card" data-category="languages">
+                <i class="fa-brands fa-python" style="color: #3776AB;"></i>
+                <span>Python</span>
+            </div>
+            <div class="skill-card" data-category="frontend">
+                <i class="devicon-html5-plain colored"></i>
+                <span>HTML5</span>
+            </div>
+            <div class="skill-card" data-category="frontend">
+                <i class="devicon-css3-plain colored"></i>
+                <span>CSS3</span>
+            </div>
+            <div class="skill-card" data-category="frontend">
+                <i class="devicon-react-original colored"></i>
+                <span>React.js</span>
+            </div>
+            <div class="skill-card" data-category="frontend">
+                <i class="devicon-tailwindcss-original colored"></i>
+                <span>Tailwind CSS</span>
+            </div>
+            <div class="skill-card" data-category="backend">
+                <i class="devicon-nodejs-plain-wordmark colored"></i>
+                <span>Node.js</span>
+            </div>
+            <div class="skill-card" data-category="backend">
+                <i class="devicon-express-original"></i>
+                <span>Express.js</span>
+            </div>
+            <div class="skill-card" data-category="databases">
+                <i class="devicon-mongodb-plain colored"></i>
+                <span>MongoDB</span>
+            </div>
+            <div class="skill-card" data-category="tools">
+                <i class="devicon-git-plain colored"></i>
+                <span>Git</span>
+            </div>
+            <div class="skill-card" data-category="tools">
+                <i class="devicon-github-original"></i>
+                <span>GitHub</span>
+            </div>
+            <div class="skill-card" data-category="tools">
+                <i class="devicon-vscode-plain colored"></i>
+                <span>VS Code</span>
+            </div>
+            <div class="skill-card" data-category="tools">
+                <i class="devicon-vercel-original"></i>
+                <span>Vercel</span>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="certifications-section" id="certifications">
+        <h2 class="section-title">Certifications - <span class="purple-text">Learning Milestones!</span></h2>
+
+        <div class="cert-grid">
+
+            <!-- TODO: add your real certificate image to portfolio_assets/ and update the src/link below -->
+            <div class="cert-item">
+                <div class="cert-img-wrapper">
+                    <img src="portfolio_assets/gdg vibe.png" alt="GDG Vibe Coding Hackathon Certification">                </div>
+                <div class="cert-info">
+                    <h3>GDG Vibe Coding Hackathon Certification</h3>
+                    <p>Participated in the GDG Vibe Coding Hackathon, gaining hands-on experience in rapid AI-assisted development and collaborative problem-solving.</p>
+                </div>
+            </div>
+
+            <!-- TODO: add a real screenshot/badge image for your OpenMRS contribution -->
+            <div class="cert-item">
+                <div class="cert-img-wrapper">
+                    <img src="portfolio_assets/CertificateOfCompletion_Career Essentials in Generative AI by Microsoft and LinkedIn_page-0001.jpg" alt="OpenMRS Open Source Contribution">
+                </div>
+                <div class="cert-info">
+                    <h3>Career Essentials in Generative AI by Microsoft and LinkedIn</h3>
+                    <p>Earned a certificate demonstrating foundational knowledge of generative AI concepts, tools, and applications.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <br>
+
+    <section class="profiles-section" id="profiles">
+        <h2 class="section-title">Web Presence - <span class="purple-text">Dev Network!</span></h2>
+        <div class="profile-header">
+            <div class="profile-img-main">
+                <!-- TODO: add your own photo to portfolio_assets/ -->
+                <img src="portfolio_assets/Profile pic.jpeg" alt="Arti Dwivedi">
+            </div>
+            <div class="profile-text">
+                <p class="purple-text">Arti Dwivedi</p>
+            </div>
+        </div>
+
+        <div class="profiles-grid">
+
+            <!-- TODO: replace # with your real profile URLs -->
+            <a href="https://www.linkedin.com/in/artidwivedi-dev/" target="_blank" class="profile-card">
+                <div class="profile-icon">
+                    <i class="fa-brands fa-linkedin" style="color: #0077b5;"></i>
+                </div>
+                <div class="profile-info">
+                    <h3>LinkedIn</h3>
+                    <p>Connect</p>
+                </div>
+            </a>
+
+            <a href="https://github.com/arti-nova" target="_blank" class="profile-card">
+                <div class="profile-icon">
+                    <i class="fa-brands fa-github" style="color: #fff;"></i>
+                </div>
+                <div class="profile-info">
+                    <h3>GitHub</h3>
+                    <p>Commit</p>
+                </div>
+            </a>
+
+            <a href="https://leetcode.com/u/y0YOe9f80e/" target="_blank" class="profile-card">
+                <div class="profile-icon">
+                    <i class="devicon-leetcode-plain colored"></i>
+                </div>
+                <div class="profile-info">
+                    <h3>LeetCode</h3>
+                    <p>300+ Solved</p>
+                </div>
+            </a>
+
+        </div>
+        <br>
+        <p class="profile-note">You can explore further by clicking on any of the profile cards above!</p>
+    </section>
+
+    <br>
+
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Get In Touch - <span class="purple-text">Ask Me Anything!</span></h2>
+            <h4 class="contact-note">Ready to collaborate or have a project in mind?<br> I'm always open to new
+                opportunities and interesting conversations.</h4>
+            <div class="contact-card">
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required placeholder=" " autocomplete="off">
+                        <label for="name">Name</label>
+                        <i class="fa-solid fa-user input-icon"></i>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required placeholder=" " autocomplete="off">
+                        <label for="email">Email</label>
+                        <i class="fa-solid fa-envelope input-icon"></i>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
+                        <label for="message">Message</label>
+                        <i class="fa-solid fa-comment input-icon"></i>
+                    </div>
+                    <button type="submit" class="btn-resume btn-submit">
+                        <span>Send Message</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h2 class="footer-logo">Arti<span class="purple-text">Dwivedi</span></h2>
+                <p class="footer-tagline">Learning, Building, and Shipping Real Code!</p>
+            </div>
+
+            <ul class="footer-nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#profiles">Profiles</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="footer-socials">
+                <!-- TODO: replace # / mailto with your real links -->
+                <a href="https://www.linkedin.com/in/artidwivedi-dev/" target="_blank" class="social-link linkedin"><i
+                        class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/arti-nova" target="_blank" class="social-link github"><i
+                        class="fa-brands fa-github"></i></a>
+                <a href="mailto:artidwivedi551@gmail.com" target="_blank" class="social-link email"><i
+                        class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Arti Dwivedi. All rights reserved.</p>
+            <button id="backToTop" class="back-to-top" aria-label="Back to Top">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+
+    <div id="resumeModal" class="resume-modal">
+        <div class="resume-modal-content glass-card">
+            <span class="close-modal" id="closeResumeBtn">&times;</span>
+            <h2 style="margin-bottom: 20px;">My Resume - <span class="purple-text">On Paper!</span></h2>
+            <div class="resume-iframe-container">
+                <!-- TODO: add your own resume PDF to portfolio_assets/ and update this path -->
+                <iframe src="portfolio_assets/Arrfc.pdf" width="100%" height="100%"
+                    style="border: none;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script src="3d_background.js"></script>
+    <script src="script.js"></script>
+    <script>
+    window.addEventListener('load', () => {
+        window.scrollTo(0, 0);
+    });
+    setTimeout(() => window.scrollTo(0, 0), 1000);
+</script>
+</body>
+</html>
